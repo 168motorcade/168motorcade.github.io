@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>168叫車 - 車資計算器</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+h1 {
+  font-size: 36px; /* 增大標題字體大小 */
+}
+input {
+  padding: 5px;
+  margin: 10px;
+  width: 100px;
+}
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.line-button {
+  background-color: #00b900;
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+.calculator-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.ride-fare-calculator {
+  background-color: #f0f8ff; /* 搭車費用計算器淺藍色背景 */
+}
+.chauffeur-fare-calculator {
+  background-color: #fffacd; /* 代駕費用計算器淡黃色背景 */
+}
+</style>
+</head>
+<body>
+<h1>168叫車 - 車資計算器</h1>
+
+<div class="calculator-container ride-fare-calculator">
+<h2>搭車費用計算器</h2>
+<label for="distance">導航里程 (公里):</label>
+<input type="number" id="distance" name="distance" value="10">
+<br>
+<button onclick="calculateFare()">計算搭車費用</button>
+<h3 id="fare">預估搭車費用: </h3>
+<p id="note">備註: 以實際里程數為主</p>
+</div>
+
+<div class="calculator-container chauffeur-fare-calculator">
+<h2>代駕費用計算器</h2>
+<label for="distance-chauffeur">導航里程 (公里):</label>
+<input type="number" id="distance-chauffeur" name="distance-chauffeur" value="10">
+<br>
+<button onclick="calculateChauffeurfFare()">計算代駕費用</button>
+<h3 id="chauffeur-fare">預估代駕費用: </h3>
+<p id="chauffeur-note">備註: 以實際里程數為主</p>
+</div>
+
+<a href="https://lin.ee/SvsEmSM" class="line-button" target="_blank">加入 LINE 好友</a>
+
+<script>
+function calculateFare() {
+  var distance = document.getElementById("distance").value;
+  var fare = 70 + distance * 20;
+  document.getElementById("fare").textContent = "預估搭車費用: " + fare + " 元";
+}
+
+function calculateChauffeurfFare() {
+  var distance = document.getElementById("distance-chauffeur").value;
+  var fare;
+  if (distance <= 3) {
+    fare = 400;
+  } else {
+    fare = 400 + (distance - 3) * 50;
+  }
+  document.getElementById("chauffeur-fare").textContent = "預估代駕費用: " + fare + " 元";
+}
+</script>
+</body>
+</html>
